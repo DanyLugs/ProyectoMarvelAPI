@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#850f13</color>
     <color name="colorAccent">#cecece</color>
 
-    <color name="colorPersonaje">#b90205</color>
-    <color name="colorAliados">#22911c</color>
-    <color name="colorVillano">#030303</color>
+    <color name="colorPersonaje">#7e0002</color>
+    <color name="colorAliados">#043601</color>
+    <color name="colorVillano">#37064b</color>
 
     <color name="colorIconos">#000000</color>
     <color name="colorWhite">#ffffff</color>
