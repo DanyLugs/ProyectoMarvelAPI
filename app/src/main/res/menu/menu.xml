@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemPersonaje"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/information"
+        android:title="@string/personaje" />
+    <item
+        android:id="@+id/itemAlly"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/support"
+        android:title="@string/ally" />
+    <item
+        android:id="@+id/itemVillain"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/skull"
+        android:title="@string/villain" />
+</menu>

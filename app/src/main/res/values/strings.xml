@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BottomNavigationProyecto</string>
+    <string name="personaje">Personaje</string>
+    <string name="ally">Aliados</string>
+    <string name="villain">Villanos</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="personajeFragment">AQUI VAN LA BIO DEL PERSONAJE</string>
+    <string name="aliadosFragment">AQUI VAN LOS ALIADOS DE TU PERSONAJE</string>
+    <string name="villanosFragment">AQUI VAN LOS VILLANOS DE TU PERSONAJE</string>
+
+</resources>

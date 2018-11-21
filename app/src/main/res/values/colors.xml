@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9c0000</color>
+    <color name="colorPrimaryDark">#850f13</color>
+    <color name="colorAccent">#cecece</color>
+
+    <color name="colorPersonaje">#b90205</color>
+    <color name="colorAliados">#22911c</color>
+    <color name="colorVillano">#030303</color>
+
+    <color name="colorIconos">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteTransparent">#80ffffff</color>
+</resources>
