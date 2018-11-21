@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">BottomNavigationProyecto</string>
+    <string name="app_name">Spiderman</string>
     <string name="personaje">Personaje</string>
     <string name="ally">Aliados</string>
     <string name="villain">Villanos</string>
+    <string name="tarjeta">SpiderMan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="personajeFragment">AQUI VAN LA BIO DEL PERSONAJE</string>
