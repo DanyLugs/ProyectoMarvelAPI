@@ -1,11 +1,12 @@
-package com.danylugo.bottomnavigationproyecto.MarvrelAPI;
+package com.danylugo.bottomnavigationproyecto.Model;
 
 public class Personaje {
+
     public String name;
     public String description;
     public String imageCharacter;
 
-    public Personaje(String name, String variantDescription, String description, String imageCharacter) {
+    public Personaje(String name, String description, String imageCharacter) {
         this.name = name;
         this.description = description;
         this.imageCharacter = imageCharacter;
