@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
         aliadosFragment = new AliadosFragment();
         villanosFragment = new VillanosFragment();
 
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_frame, personajeFragment);
+        fragmentTransaction.commit();
+
         mMain_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

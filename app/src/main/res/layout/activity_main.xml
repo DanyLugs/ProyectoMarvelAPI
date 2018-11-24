@@ -14,7 +14,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:visibility="visible"
-        app:itemBackground="@color/colorPrimary"
+        app:itemBackground="@color/colorPersonaje"
         app:itemIconTint="@color/nav_item_colors"
         app:itemTextColor="@color/nav_item_colors"
         app:menu="@menu/menu">
