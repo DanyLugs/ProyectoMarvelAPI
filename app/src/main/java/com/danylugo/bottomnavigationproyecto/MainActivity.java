@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         mMain_frame = (FrameLayout) findViewById(R.id.main_frame);
         mMain_nav = (BottomNavigationView) findViewById(R.id.btmNavigationView);
 
@@ -66,12 +65,10 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(villanosFragment);
                         return true;
 
-
                         default:
                             return false;
 
                 }
-                //return true;
             }
         });
     }
