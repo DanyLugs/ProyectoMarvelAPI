@@ -2,37 +2,27 @@ package com.danylugo.bottomnavigationproyecto;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.danylugo.bottomnavigationproyecto.MarvrelAPI.Constants;
-import com.danylugo.bottomnavigationproyecto.MarvrelAPI.RestApiAdapter;
-import com.danylugo.bottomnavigationproyecto.MarvrelAPI.Service;
-import com.danylugo.bottomnavigationproyecto.Model.Personaje;
-import com.google.gson.JsonObject;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.danylugo.bottomnavigationproyecto.Adapter.SpiderSelAdapter;
+import com.danylugo.bottomnavigationproyecto.Model.Secondary;
+import com.danylugo.bottomnavigationproyecto.Model.Spider;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Response;
 
 public class SpiderSelector extends AppCompatActivity {
 
-    private CardView card;
-    private Button button;
-    private TextView tv;
-    ArrayList<Personaje> characters;
-
+    private List<Spider> spiders;
+    private SpiderSelAdapter mAdapter;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,77 +32,73 @@ public class SpiderSelector extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        card      = (CardView) findViewById(R.id.card);
-        tv        = (TextView) findViewById(R.id.tv);
-        button    = (Button) findViewById(R.id.button);
-        characters = new ArrayList<>();
+        buildRecyclerView();
+    }
 
-        RestApiAdapter restApiAdapter = new RestApiAdapter();
-        Service service = restApiAdapter.getCharacterService();
-        retrofit2.Call<JsonObject> call = service.getDataPersonaje(Constants.APIKEY,Constants.TS,Constants.HASH);
+    public void buildRecyclerView(){
+        mRecyclerView = findViewById(R.id.recycler);
+        spiders = new ArrayList<>();
 
-       call.enqueue(new retrofit2.Callback<JsonObject>(){
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
+        mAdapter = new SpiderSelAdapter(spiders);
+        mRecyclerView.setAdapter(mAdapter);
+
+        changeActivity();
+        addElements();
+    }
+
+    public void changeActivity(){
+        mAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
+            public void onClick(View view) {
+                Spider spidy = spiders.get(mRecyclerView.getChildAdapterPosition(view));
 
-                    try {
-                    assert response.body() != null;
-                    JSONObject jsonObject = new JSONObject(response.body().getAsJsonObject("data").toString());
-                    JSONArray jsonArray   = jsonObject.getJSONArray("results");
-                    parseCharacter(jsonArray);
-                    tv.setText(characters.get(0).getImageCharacter());
+                Intent intent = new Intent(SpiderSelector.this, MainActivity.class);
 
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("spiderV",spidy);
+                intent.putExtras(bundle);
 
-            }
+                startActivity(intent);
 
-            @Override
-            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
-
+                Toast.makeText(getApplicationContext(),
+                        "Selección: "+spidy.getName(),Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void parseCharacter(JSONArray jsonArray) throws JSONException{
+    public void addElements(){
+        String uri = "@drawable/spider_man_card2";
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+        Drawable imagen = getDrawable(imageResource);
 
-        for (int i = 0; i < jsonArray.length(); i++){
-            JSONObject character = jsonArray.getJSONObject(i);
-            String name = character.getString("name");
-            String description = character.getString("description");
+        String uri2 = "@drawable/skull";
+        int imageResource2 = getResources().getIdentifier(uri2, null, getPackageName());
+        Drawable imagen2 = getDrawable(imageResource2);
 
-            if (character.isNull("description")){
-                description = "Not avalible for this character";
-            }else{
-                description = character.getString("description");
-            }
+        ArrayList<Secondary> enemies = new ArrayList<>();
+        Secondary enemy = new Secondary("feminazi",R.drawable.skull);
+        enemies.add(enemy);
 
-            JSONArray image = character.getJSONArray("thumbnail");
+        ArrayList<Secondary> allies = new ArrayList<>();
+        Secondary ally = new Secondary("joan Guerrero",R.drawable.skull);
+        allies.add(ally);
 
-            String path = "";
-            String extension = "";
-
-            if (image.length() != 0){
-                JSONObject objectImage = image.getJSONObject(0);
-                path = objectImage.getString("path");
-                extension = objectImage.getString("extension");
-            }else{
-                path = "Image";
-                extension = "Not Avalible";
-            }
-
-            characters.add(new Personaje(name,description,path + "." + extension));
-        }
-    }
-
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.card:
-                Intent intent = new Intent(SpiderSelector.this, MainActivity.class);
-                startActivity(intent);
-            break;
-        }
+        Spider a = new Spider("Spider-Moy", "Acosa","Vivo", imagen2 , imagen, enemies,allies);
+        spiders.add(a);
+        a = new Spider("Spider-Oski", "Le gusta el degenere sexual","Muerto", imagen2, imagen,enemies,allies);
+        spiders.add(a);
+        a = new Spider("Spider-Punk", "Le gusta el degenere sexual", "Vivo", imagen2 , imagen,enemies,allies);
+        spiders.add(a);
+        a = new Spider("Spider-Ham", "Le gusta el degenere sexual", "Vivo", imagen2 , imagen,enemies,allies);
+        spiders.add(a);
+        a = new Spider("Ultimate Spider-Oski", "Le gusta el degenere sexual", "Vivo", imagen2 , imagen,enemies,allies);
+        spiders.add(a);
+        a = new Spider("Spider-Oski 2099", "Le gusta el degenere sexual", "Vivo", imagen2 , imagen,enemies,allies);
+        spiders.add(a);
+        a = new Spider("Spider-Oski Zombie", "Le gusta el degenere sexual", "Vivo", imagen2 , imagen,enemies,allies);
+        spiders.add(a);
     }
 }

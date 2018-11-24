@@ -1,19 +1,30 @@
 package com.danylugo.bottomnavigationproyecto;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
+import com.danylugo.bottomnavigationproyecto.Adapter.SecondaryListAdapter;
+import com.danylugo.bottomnavigationproyecto.Adapter.SpiderSelAdapter;
 import com.danylugo.bottomnavigationproyecto.Fragments.AliadosFragment;
 import com.danylugo.bottomnavigationproyecto.Fragments.PersonajeFragment;
 import com.danylugo.bottomnavigationproyecto.Fragments.VillanosFragment;
+import com.danylugo.bottomnavigationproyecto.Model.Secondary;
+import com.danylugo.bottomnavigationproyecto.Model.Spider;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static com.danylugo.bottomnavigationproyecto.R.color.colorPrimary;
@@ -65,12 +76,13 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(villanosFragment);
                         return true;
 
-                        default:
-                            return false;
+                    default:
+                        return false;
 
                 }
             }
         });
+        setValues();
     }
 
     private void setFragment(Fragment fragment) {
@@ -80,4 +92,18 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.main_frame, fragment);
         fragmentTransaction.commit();
     }
+
+    public void setValues() {
+
+        TextView desName = findViewById(R.id.dName);
+
+        Bundle bundle = getIntent().getExtras();
+
+        Spider spidy = (Spider) bundle.getSerializable("spiderV");
+        desName.setText(spidy.getName());
+
+    }
+
+
+
 }

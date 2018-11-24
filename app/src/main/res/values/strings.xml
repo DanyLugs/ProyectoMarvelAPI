@@ -2,12 +2,17 @@
     <string name="app_name">Spiderman</string>
     <string name="personaje">Personaje</string>
     <string name="ally">Aliados</string>
-    <string name="villain">Villanos</string>
+    <string name="enemies">Enemigos</string>
     <string name="tarjeta">SpiderMan</string>
+    <string name="in_memoriam">In Memoriam de Stan Lee</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="personajeFragment">AQUI VAN LA BIO DEL PERSONAJE</string>
     <string name="aliadosFragment">AQUI VAN LOS ALIADOS DE TU PERSONAJE</string>
     <string name="villanosFragment">AQUI VAN LOS VILLANOS DE TU PERSONAJE</string>
+
+    <string name="dName">Nombre del Personaje</string>
+    <string name="status">Status del Personaje</string>
+    <string name="description">Aqui aparecera una pequeña descripción del personaje</string>
 
 </resources>

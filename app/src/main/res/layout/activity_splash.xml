@@ -7,4 +7,5 @@
     tools:context=".SplashActivity"
     android:background="@drawable/marvel_splash_n">
 
+
 </android.support.constraint.ConstraintLayout>
