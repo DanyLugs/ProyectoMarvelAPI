@@ -51,7 +51,7 @@ public class SpiderSelector extends AppCompatActivity {
         Service service = restApiAdapter.getCharacterService();
         retrofit2.Call<JsonObject> call = service.getDataPersonaje(Constants.APIKEY,Constants.TS,Constants.HASH);
 
-        call.enqueue(new retrofit2.Callback<JsonObject>(){
+       /*call.enqueue(new retrofit2.Callback<JsonObject>(){
 
             @Override
             public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
@@ -73,7 +73,7 @@ public class SpiderSelector extends AppCompatActivity {
             public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
             }
-        });
+        });*/
     }
 
     public void parseCharacter(JSONArray jsonArray) throws JSONException{

@@ -8,6 +8,6 @@ import retrofit2.http.Query;
 
 public interface Service {
 
-    @GET(Constants.REST_ENDPOINT)
+    @GET(Constants.VERSION + Constants.REST_ENDPOINT)
     Call<JsonObject> getDataPersonaje(@Query("apikey") String apikey, @Query("ts") String ts,@Query("hash")String hash);
 }
