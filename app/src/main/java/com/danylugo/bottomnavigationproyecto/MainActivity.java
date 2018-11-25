@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        bottomNavService();
+        setValues();
+    }
+
+    private void bottomNavService(){
         mMain_frame = (FrameLayout) findViewById(R.id.main_frame);
         mMain_nav = (BottomNavigationView) findViewById(R.id.btmNavigationView);
 
@@ -82,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        setValues();
     }
 
     private void setFragment(Fragment fragment) {
@@ -97,13 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
         TextView desName = findViewById(R.id.dName);
 
-        Bundle bundle = getIntent().getExtras();
+       // Bundle bundle = getIntent().getBundleExtra("bundle");
 
-        Spider spidy = (Spider) bundle.getSerializable("spiderV");
-        desName.setText(spidy.getName());
+       // Spider spidy = (Spider) bundle.getSerializable("spiderV");
+       // desName.setText(spidy.getName());
 
     }
-
-
 
 }

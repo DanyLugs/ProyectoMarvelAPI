@@ -57,9 +57,9 @@ public class SpiderSelector extends AppCompatActivity {
 
                 Intent intent = new Intent(SpiderSelector.this, MainActivity.class);
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("spiderV",spidy);
-                intent.putExtras(bundle);
+                //Bundle bundle = new Bundle();
+                //bundle.putSerializable("spiderV",spidy);
+                //intent.putExtras(bundle);
 
                 startActivity(intent);
 
