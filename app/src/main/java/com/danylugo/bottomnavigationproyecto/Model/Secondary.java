@@ -1,30 +1,28 @@
 package com.danylugo.bottomnavigationproyecto.Model;
 
-import android.graphics.drawable.Drawable;
-
 public class Secondary {
 
-    private String sName;
-    private int sImage;
+    private String name;
+    private int image;
 
     public Secondary(String sName, int sImage) {
-        this.sName = sName;
-        this.sImage = sImage;
+        this.name = sName;
+        this.image = sImage;
     }
 
-    public String getsName() {
-        return sName;
+    public String getName() {
+        return name;
     }
 
-    public void setsName(String sName) {
-        this.sName = sName;
+    public void setName(String sName) {
+        this.name = sName;
     }
 
-    public int getsImage() {
-        return sImage;
+    public int getImage() {
+        return image;
     }
 
-    public void setsImage(int sImage) {
-        this.sImage = sImage;
+    public void setImage(int sImage) {
+        this.image = sImage;
     }
 }

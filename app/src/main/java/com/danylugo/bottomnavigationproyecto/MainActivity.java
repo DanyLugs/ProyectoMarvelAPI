@@ -1,33 +1,20 @@
 package com.danylugo.bottomnavigationproyecto;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import com.danylugo.bottomnavigationproyecto.Adapter.SecondaryListAdapter;
-import com.danylugo.bottomnavigationproyecto.Adapter.SpiderSelAdapter;
 import com.danylugo.bottomnavigationproyecto.Fragments.AliadosFragment;
 import com.danylugo.bottomnavigationproyecto.Fragments.PersonajeFragment;
 import com.danylugo.bottomnavigationproyecto.Fragments.VillanosFragment;
-import com.danylugo.bottomnavigationproyecto.Model.Secondary;
-import com.danylugo.bottomnavigationproyecto.Model.Spider;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-
-import static com.danylugo.bottomnavigationproyecto.R.color.colorPrimary;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,12 +33,11 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         bottomNavService();
-        setValues();
     }
 
     private void bottomNavService(){
-        mMain_frame = (FrameLayout) findViewById(R.id.main_frame);
-        mMain_nav = (BottomNavigationView) findViewById(R.id.btmNavigationView);
+        mMain_frame = findViewById(R.id.main_frame);
+        mMain_nav = findViewById(R.id.btmNavigationView);
 
         personajeFragment = new PersonajeFragment();
         aliadosFragment = new AliadosFragment();
@@ -97,15 +83,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void setValues() {
-
-        TextView desName = findViewById(R.id.dName);
-
-       // Bundle bundle = getIntent().getBundleExtra("bundle");
-
-       // Spider spidy = (Spider) bundle.getSerializable("spiderV");
-       // desName.setText(spidy.getName());
-
-    }
 
 }

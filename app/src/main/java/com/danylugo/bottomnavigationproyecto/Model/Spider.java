@@ -9,17 +9,15 @@ public class Spider implements Serializable {
 
     private String name;
     private String description;
-    private String status;
-    private Drawable image;
-    private Drawable imageCard;
+    private String thumnail;
+    private int imageCard;
     private List<Secondary> enemies;
     private List<Secondary> allies;
 
-    public Spider(String name, String description, String status, Drawable image, Drawable imageCard, List<Secondary> enemies, List<Secondary> allies) {
+    public Spider(String name, String description, String thumnail, int imageCard, List<Secondary> enemies, List<Secondary> allies) {
         this.name = name;
         this.description = description;
-        this.status = status;
-        this.image = image;
+        this.thumnail = thumnail;
         this.imageCard = imageCard;
         this.enemies = enemies;
         this.allies = allies;
@@ -41,28 +39,20 @@ public class Spider implements Serializable {
         this.description = description;
     }
 
-    public Drawable getImageCard() {
+    public String getThumnail() {
+        return thumnail;
+    }
+
+    public void setThumnail(String thumnail) {
+        this.thumnail = thumnail;
+    }
+
+    public int getImageCard() {
         return imageCard;
     }
 
-    /*public void setImageCard(Drawable imageCard) {
+    public void setImageCard(int imageCard) {
         this.imageCard = imageCard;
-    }*/
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Drawable getImage() {
-        return image;
-    }
-
-    public void setImage(Drawable image) {
-        this.image = image;
     }
 
     public List<Secondary> getEnemies() {

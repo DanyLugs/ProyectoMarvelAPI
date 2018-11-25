@@ -20,6 +20,11 @@ public class SpiderSelAdapter extends RecyclerView.Adapter<SpiderSelAdapter.MyVi
     private List<Spider> personajeList;
     private View.OnClickListener listener;
 
+    public void adicionarListaSpiders(List<Spider> spiders) {
+        personajeList.addAll(spiders);
+        notifyDataSetChanged();
+    }
+
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView spiderName;
         public ImageView spiderCardImage;
@@ -62,7 +67,7 @@ public class SpiderSelAdapter extends RecyclerView.Adapter<SpiderSelAdapter.MyVi
         Spider spider = personajeList.get(i);
         myViewHolder.spiderName.setText(spider.getName());
 
-        myViewHolder.spiderCardImage.setBackground(spider.getImageCard());
+        myViewHolder.spiderCardImage.setImageResource(spider.getImageCard());
     }
 
     @Override

@@ -58,9 +58,9 @@ public class SecondaryListAdapter extends RecyclerView.Adapter<SecondaryListAdap
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         Secondary secondary = personajeList.get(i);
-        myViewHolder.spiderName.setText(secondary.getsName());
+        myViewHolder.spiderName.setText(secondary.getName());
 
-        myViewHolder.spiderCardImage.setImageResource(secondary.getsImage());
+        myViewHolder.spiderCardImage.setImageResource(secondary.getImage());
     }
 
     @Override
