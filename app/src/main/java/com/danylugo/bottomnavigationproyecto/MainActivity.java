@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String id = bundle.getString("stringId");
 
-
         Bundle args = new Bundle();
         args.putString("spiderID",id);
 

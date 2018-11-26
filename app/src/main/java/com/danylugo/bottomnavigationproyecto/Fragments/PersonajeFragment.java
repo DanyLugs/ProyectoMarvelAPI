@@ -65,7 +65,7 @@ public class PersonajeFragment extends Fragment {
         Log.i("SPIDEX",texto);
         id=texto;
 
-        if(texto!="666666") {
+        if(texto !="666666") {
             getDatos(id);
         }else{
             getSpiderMoy();
@@ -80,7 +80,7 @@ public class PersonajeFragment extends Fragment {
         description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
     }
 
-    public  void getDatos(String id){
+    public void getDatos(String id){
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Service service = restApiAdapter.getCharacterService();
         retrofit2.Call<JsonObject> call = service.getDataPersonajeById(id,Constants.APIKEY,Constants.TS,Constants.HASH);
