@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Spider implements Serializable {
 
+    private int id;
     private String name;
     private String description;
     private String thumnail;
@@ -14,13 +15,22 @@ public class Spider implements Serializable {
     private List<Secondary> enemies;
     private List<Secondary> allies;
 
-    public Spider(String name, String description, String thumnail, int imageCard, List<Secondary> enemies, List<Secondary> allies) {
+    public Spider(int id, String name, String description, String thumnail, int imageCard, List<Secondary> enemies, List<Secondary> allies) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.thumnail = thumnail;
         this.imageCard = imageCard;
         this.enemies = enemies;
         this.allies = allies;
+    }
+
+    public int getId() {
+        return imageCard;
+    }
+
+    public void setId(int imageCard) {
+        this.imageCard = imageCard;
     }
 
     public String getName() {
