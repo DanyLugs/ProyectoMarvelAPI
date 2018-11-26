@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Spiderman</string>
+    <string name="app_name">Spider-Man App</string>
     <string name="personaje">Personaje</string>
     <string name="ally">Aliados</string>
     <string name="enemies">Enemigos</string>

@@ -141,6 +141,7 @@ public class SpiderSelector extends AppCompatActivity {
     public void parseCharacter(JSONArray jsonArray) throws JSONException{
         for(int i = 0; i<jsonArray.length();i++){
             JSONObject character = jsonArray.getJSONObject(i);
+            int id = character.getInt("id");
             String name = character.getString("name");
             String description = "";
 
@@ -163,7 +164,7 @@ public class SpiderSelector extends AppCompatActivity {
                 extension = "Not Avalible";
             }
 
-            spiders.add(new Spider(name, description, path + "." + extension, R.drawable.spider_man_card2, enemies, allies));
+            spiders.add(new Spider(id, name, description, path + "." + extension, R.drawable.spider_man_card2, enemies, allies));
         }
     }
 }
