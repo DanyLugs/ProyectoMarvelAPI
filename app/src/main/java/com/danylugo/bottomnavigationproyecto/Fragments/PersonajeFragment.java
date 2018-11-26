@@ -132,7 +132,7 @@ public class PersonajeFragment extends Fragment {
             extension = objectImage.getString("extension");
         } else {
             path = "Image";
-            extension = "Not Avalible";
+            extension = "Not Available";
         }
 
         //JSONObject objectComic = character.getJSONObject("comics");
@@ -149,7 +149,7 @@ public class PersonajeFragment extends Fragment {
         if (!spider.getDescription().equals("")) {
             description.setText("Description:\n" + "\n" + spider.getDescription());
         }else{
-            description.setText("Description:\n" + "\n" + "Not avalible for this character");
+            description.setText("Description:\n" + "\n" + "Not available for this character");
         }
         Glide.with(this)
                 .load(spider.getThumnail())
