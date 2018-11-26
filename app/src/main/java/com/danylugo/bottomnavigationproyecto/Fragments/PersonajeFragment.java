@@ -127,9 +127,9 @@ public class PersonajeFragment extends Fragment {
             extension = "Not Available";
         }
 
-        //JSONObject objectComic = character.getJSONObject("comics");
+        JSONObject objectComic = character.getJSONObject("comics");
 
-        int comics = 0; //comics = objectComic.getInt("available");
+        int comics = 0; comics = objectComic.getInt("available");
 
         spider = new Spider(id, comics, name , description, path + "." + extension);
     }
@@ -145,7 +145,7 @@ public class PersonajeFragment extends Fragment {
         }
         name.setText(spider.getName());
         tvStatus.setText("Status: Alive");
-        tvComics.setText("Appearances in Comics: 1");
+        tvComics.setText("Appearances in Comics: "+spider.getComics());
         if (!spider.getDescription().equals("")) {
             description.setText("Description:\n" + "\n" + spider.getDescription());
         }else{
@@ -161,5 +161,4 @@ public class PersonajeFragment extends Fragment {
                     .into(image);
         }
     }
-
 }
