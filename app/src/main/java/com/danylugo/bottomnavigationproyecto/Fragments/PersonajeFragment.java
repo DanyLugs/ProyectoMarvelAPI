@@ -41,7 +41,7 @@ public class PersonajeFragment extends Fragment {
     private Spider spider;
 
     private TextView name;
-    private TextView status;
+    private TextView tvStatus;
     private TextView description;
     private ImageView image;
 
@@ -56,7 +56,7 @@ public class PersonajeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         name = v.findViewById(R.id.dName);
-        status = v.findViewById(R.id.status);
+        tvStatus = v.findViewById(R.id.status);
         description = v.findViewById(R.id.description);
         image = v.findViewById(R.id.image);
 
@@ -76,7 +76,7 @@ public class PersonajeFragment extends Fragment {
 
     private void getSpiderMoy() {
         name.setText("Spider Moy");
-        status.setText("Dead");
+        tvStatus.setText("Dead");
         description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
     }
 
@@ -114,14 +114,17 @@ public class PersonajeFragment extends Fragment {
 
         int id = character.getInt("id");
         String name = character.getString("name");
+        String status = "";
 
         String description = "";
 
-        if (character.isNull("description")) {
+        /*if (character.isNull("description")) {
             description = "Not avalible for this character";
         } else {
             description = character.getString("description");
-        }
+        }*/
+
+        description = character.getString("description");
 
         JSONObject objectImage = character.getJSONObject("thumbnail");
 
@@ -136,18 +139,31 @@ public class PersonajeFragment extends Fragment {
             extension = "Not Avalible";
         }
 
-        spider = new Spider(id, name , description, path + "." + extension);
+
+        /*JSONObject objectStatus = character.getJSONObject("status");
+
+
+
+        if (objectStatus.getString("status") != "") {
+            status = objectImage.getString("status");
+        } else {
+            status = "Unknown";
+        }*/
+
+        spider = new Spider(id, status, name , description, path + "." + extension);
     }
 
     public void setDatos(Spider spider){
         name.setText(spider.getName());
-        status.setText("Status: Alive");
-        description.setText("Description:\n"+"\n"+spider.getDescription());
+        tvStatus.setText("Status: Alive");
+        if (!spider.getDescription().equals("")) {
+            description.setText("Description:\n" + "\n" + spider.getDescription());
+        }else{
+            description.setText("Description:\n" + "\n" + "Not avalible for this character");
+        }
         Glide.with(this)
                 .load(spider.getThumnail())
                 .into(image);
-
-
     }
 
 }

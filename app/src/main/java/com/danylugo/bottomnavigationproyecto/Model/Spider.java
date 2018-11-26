@@ -8,13 +8,19 @@ public class Spider implements Serializable {
     private String name;
     private String description;
     private String thumnail;
+    private String status;
 
-    public Spider(int id, String name, String description, String thumnail) {
+    public Spider(int id, String status, String name, String description, String thumnail) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.thumnail = thumnail;
+        this.status = status;
     }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
 
     public int getId() {
         return id;
