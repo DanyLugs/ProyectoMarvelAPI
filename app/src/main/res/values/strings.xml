@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Spider-Man App</string>
-    <string name="personaje">Personaje</string>
-    <string name="ally">Aliados</string>
-    <string name="enemies">Enemigos</string>
-    <string name="tarjeta">SpiderMan</string>
+    <string name="personaje">Character</string>
+    <string name="ally">Allies</string>
+    <string name="enemies">Enemies</string>
+    <string name="tarjeta">Spider-Man</string>
     <string name="in_memoriam">In Memoriam de Stan Lee</string>
 
     <!-- TODO: Remove or change this placeholder text -->
