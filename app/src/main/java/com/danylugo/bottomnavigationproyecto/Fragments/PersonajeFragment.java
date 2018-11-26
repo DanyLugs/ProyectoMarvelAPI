@@ -145,7 +145,7 @@ public class PersonajeFragment extends Fragment {
     public void setDatos(Spider spider){
         name.setText(spider.getName());
         tvStatus.setText("Status: Alive");
-        tvComics.setText("# Appearances in Comics: 0");
+        tvComics.setText("Appearances in Comics: 1");
         if (!spider.getDescription().equals("")) {
             description.setText("Description:\n" + "\n" + spider.getDescription());
         }else{
