@@ -9,10 +9,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.danylugo.bottomnavigationproyecto.Fragments.AliadosFragment;
 import com.danylugo.bottomnavigationproyecto.Fragments.PersonajeFragment;
 import com.danylugo.bottomnavigationproyecto.Fragments.VillanosFragment;
+import com.danylugo.bottomnavigationproyecto.Model.Spider;
 
 import java.util.Objects;
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private PersonajeFragment personajeFragment;
     private VillanosFragment villanosFragment;
 
+    private Spider spider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         bottomNavService();
+        getDatos();
     }
 
     private void bottomNavService(){
@@ -83,5 +88,16 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    private void getDatos(){
+        Bundle bundle = getIntent().getExtras();
+        String id = bundle.getString("stringId");
+
+
+        Bundle args = new Bundle();
+        args.putString("spiderID",id);
+
+        personajeFragment.setArguments(args);
+
+    }
 
 }

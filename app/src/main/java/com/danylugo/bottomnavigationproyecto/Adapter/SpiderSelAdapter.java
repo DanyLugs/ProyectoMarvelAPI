@@ -1,29 +1,22 @@
 package com.danylugo.bottomnavigationproyecto.Adapter;
 
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.LayoutInflater;
 
-import com.bumptech.glide.Glide;
-import com.danylugo.bottomnavigationproyecto.Model.Spider;
+import com.danylugo.bottomnavigationproyecto.Model.SpiderCard;
+
 import com.danylugo.bottomnavigationproyecto.R;
 
 import java.util.List;
 
 public class SpiderSelAdapter extends RecyclerView.Adapter<SpiderSelAdapter.MyViewHolder> implements View.OnClickListener {
-    private List<Spider> personajeList;
+    private List<SpiderCard> personajeList;
     private View.OnClickListener listener;
-
-    public void adicionarListaSpiders(List<Spider> spiders) {
-        personajeList.addAll(spiders);
-        notifyDataSetChanged();
-    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView spiderName;
@@ -37,7 +30,7 @@ public class SpiderSelAdapter extends RecyclerView.Adapter<SpiderSelAdapter.MyVi
         }
     }
 
-    public SpiderSelAdapter(List<Spider> spiders){
+    public SpiderSelAdapter(List<SpiderCard> spiders){
         personajeList = spiders;
     }
 
@@ -64,10 +57,10 @@ public class SpiderSelAdapter extends RecyclerView.Adapter<SpiderSelAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        Spider spider = personajeList.get(i);
+        SpiderCard spider = personajeList.get(i);
         myViewHolder.spiderName.setText(spider.getName());
 
-        myViewHolder.spiderCardImage.setImageResource(spider.getImageCard());
+        myViewHolder.spiderCardImage.setImageResource(spider.getCardImage());
     }
 
     @Override
