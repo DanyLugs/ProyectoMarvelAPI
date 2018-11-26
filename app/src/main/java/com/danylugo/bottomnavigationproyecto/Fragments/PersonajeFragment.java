@@ -141,8 +141,8 @@ public class PersonajeFragment extends Fragment {
 
     public void setDatos(Spider spider){
         name.setText(spider.getName());
-        status.setText("Ok");
-        description.setText(spider.getDescription());
+        status.setText("Status: Alive");
+        description.setText("Description:\n"+"\n"+spider.getDescription());
         Glide.with(this)
                 .load(spider.getThumnail())
                 .into(image);
