@@ -13,6 +13,7 @@
 
     <string name="dName">Nombre del Personaje</string>
     <string name="status">Status del Personaje</string>
+    <string name="comics">Comics del Personaje</string>
     <string name="description">Aqui aparecera una pequeña descripción del personaje</string>
 
 </resources>

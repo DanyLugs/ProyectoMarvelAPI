@@ -42,6 +42,7 @@ public class PersonajeFragment extends Fragment {
 
     private TextView name;
     private TextView tvStatus;
+    private TextView tvComics;
     private TextView description;
     private ImageView image;
 
@@ -57,6 +58,7 @@ public class PersonajeFragment extends Fragment {
 
         name = v.findViewById(R.id.dName);
         tvStatus = v.findViewById(R.id.status);
+        tvComics = v.findViewById(R.id.comics);
         description = v.findViewById(R.id.description);
         image = v.findViewById(R.id.image);
 
@@ -77,6 +79,7 @@ public class PersonajeFragment extends Fragment {
     private void getSpiderMoy() {
         name.setText("Spider Moy");
         tvStatus.setText("Dead");
+        tvComics.setText("Varios");
         description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
     }
 
@@ -114,15 +117,8 @@ public class PersonajeFragment extends Fragment {
 
         int id = character.getInt("id");
         String name = character.getString("name");
-        String status = "";
 
         String description = "";
-
-        /*if (character.isNull("description")) {
-            description = "Not avalible for this character";
-        } else {
-            description = character.getString("description");
-        }*/
 
         description = character.getString("description");
 
@@ -139,23 +135,17 @@ public class PersonajeFragment extends Fragment {
             extension = "Not Avalible";
         }
 
+        //JSONObject objectComic = character.getJSONObject("comics");
 
-        /*JSONObject objectStatus = character.getJSONObject("status");
+        int comics = 0; //comics = objectComic.getInt("available");
 
-
-
-        if (objectStatus.getString("status") != "") {
-            status = objectImage.getString("status");
-        } else {
-            status = "Unknown";
-        }*/
-
-        spider = new Spider(id, status, name , description, path + "." + extension);
+        spider = new Spider(id, comics, name , description, path + "." + extension);
     }
 
     public void setDatos(Spider spider){
         name.setText(spider.getName());
         tvStatus.setText("Status: Alive");
+        tvComics.setText("# Appearances in Comics: 0");
         if (!spider.getDescription().equals("")) {
             description.setText("Description:\n" + "\n" + spider.getDescription());
         }else{

@@ -71,7 +71,7 @@ public class SpiderSelector extends AppCompatActivity {
         spidersCards.add(new SpiderCard("Spider-dok","1010727",R.drawable.superior_spider_man));
         spidersCards.add(new SpiderCard("Spider-Man (Noir)","1012295",R.drawable.spider_noir));
         spidersCards.add(new SpiderCard("Spider-Girl (May Parker)","1009609",R.drawable.sg));
-        spidersCards.add(new SpiderCard("Scarlet Spider (Ben Reilly)","1009610",R.drawable.scarlet_spider_ben));
+        spidersCards.add(new SpiderCard("Scarlet Spider (Ben Reilly)","1011197",R.drawable.scarlet_spider_ben));
         spidersCards.add(new SpiderCard("Spider Moy","666666",R.drawable.smoy));
 
     }
