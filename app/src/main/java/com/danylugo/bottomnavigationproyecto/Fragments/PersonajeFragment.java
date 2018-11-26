@@ -65,23 +65,15 @@ public class PersonajeFragment extends Fragment {
 
         String texto = getArguments().getString("spiderID");
         Log.i("SPIDEX",texto);
-        id=texto;
+        id = texto;
 
         if(texto !="666666") {
             getDatos(id);
-        }else{
-            getSpiderMoy();
         }
 
         return v;
     }
 
-    private void getSpiderMoy() {
-        name.setText("Spider Moy");
-        tvStatus.setText("Dead");
-        tvComics.setText("Varios");
-        description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
-    }
 
     public void getDatos(String id){
         RestApiAdapter restApiAdapter = new RestApiAdapter();
@@ -143,6 +135,14 @@ public class PersonajeFragment extends Fragment {
     }
 
     public void setDatos(Spider spider){
+
+        if(spider.getId() == 666666){
+            name.setText("Spider Moy");
+            tvStatus.setText("Dead");
+            tvComics.setText("Appearances in Comics: 1");
+            description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
+            image.setImageResource(R.drawable.smoy);
+        }
         name.setText(spider.getName());
         tvStatus.setText("Status: Alive");
         tvComics.setText("Appearances in Comics: 1");
@@ -151,9 +151,15 @@ public class PersonajeFragment extends Fragment {
         }else{
             description.setText("Description:\n" + "\n" + "Not available for this character");
         }
-        Glide.with(this)
-                .load(spider.getThumnail())
-                .into(image);
+        if (spider.getId() == 1011347) {
+            image.setImageResource(R.drawable.spider_ham);
+        }else if(spider.getId() == 1010727){
+            image.setImageResource(R.drawable.superior_spider_man);
+        }else{
+            Glide.with(this)
+                    .load(spider.getThumnail())
+                    .into(image);
+        }
     }
 
 }
