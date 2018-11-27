@@ -1,6 +1,8 @@
 package com.danylugo.bottomnavigationproyecto.Adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.danylugo.bottomnavigationproyecto.Model.Secondary;
 import com.danylugo.bottomnavigationproyecto.Model.Spider;
 import com.danylugo.bottomnavigationproyecto.R;
@@ -17,6 +20,12 @@ import java.util.List;
 public class SecondaryListAdapter extends RecyclerView.Adapter<SecondaryListAdapter.MyViewHolder> implements View.OnClickListener {
     private List<Secondary> personajeList;
     private View.OnClickListener listener;
+    private Fragment context;
+
+    public void adiccionarLista(List<Secondary> secondarys) {
+        personajeList.add(secondarys.get(0));
+        notifyDataSetChanged();
+    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView spiderName;
@@ -30,8 +39,9 @@ public class SecondaryListAdapter extends RecyclerView.Adapter<SecondaryListAdap
         }
     }
 
-    public SecondaryListAdapter(List<Secondary> secondaries){
+    public SecondaryListAdapter(List<Secondary> secondaries, Fragment context){
         personajeList = secondaries;
+        this.context = context;
     }
 
     public void setOnClickListener(View.OnClickListener listener) {
@@ -60,7 +70,9 @@ public class SecondaryListAdapter extends RecyclerView.Adapter<SecondaryListAdap
         Secondary secondary = personajeList.get(i);
         myViewHolder.spiderName.setText(secondary.getName());
 
-        myViewHolder.spiderCardImage.setImageResource(secondary.getImage());
+        Glide.with(context)
+                .load(secondary.getImage())
+                .into(myViewHolder.spiderCardImage);
     }
 
     @Override

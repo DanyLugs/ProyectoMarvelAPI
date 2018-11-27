@@ -11,11 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.danylugo.bottomnavigationproyecto.Adapter.SecondaryListAdapter;
+import com.danylugo.bottomnavigationproyecto.MarvrelAPI.Constants;
+import com.danylugo.bottomnavigationproyecto.MarvrelAPI.RestApiAdapter;
+import com.danylugo.bottomnavigationproyecto.MarvrelAPI.Service;
 import com.danylugo.bottomnavigationproyecto.Model.Secondary;
+import com.danylugo.bottomnavigationproyecto.Model.Spider;
 import com.danylugo.bottomnavigationproyecto.R;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +40,7 @@ public class AliadosFragment extends Fragment {
     private SecondaryListAdapter mAdapterA;
 
     private  String id;
+
 
     public AliadosFragment() {
         // Required empty public constructor
@@ -46,17 +60,95 @@ public class AliadosFragment extends Fragment {
         Log.i("SPIDEX",texto);
         id = texto;
 
-        addElements();
-
-        mAdapterA =new SecondaryListAdapter(allies);
+        mAdapterA =new SecondaryListAdapter(allies,this);
         alliesRecycler.setAdapter(mAdapterA);
+
+        assert id != null;
+        if(!id.equals("666666")) {
+            ArrayList<String> ids = getAlliesID(id);
+            getDatos(ids);
+        }else{
+            getDatosSpiderMoy();
+        }
+
         return view;
     }
 
-    public void addElements(){
-
-        Secondary ally = new Secondary("Joan Guerrero :v", R.drawable.skull);
-        allies.add(ally);
+    private void getDatosSpiderMoy() {
+        //aqui agreguen las de spider moy :V
+        allies.add(new Secondary("Joan Guerrero","https://scontent.fmex1-1.fna.fbcdn.net/v/t1.0-9/23319326_1483952015016277_3992862400160235205_n.jpg?_nc_cat=108&_nc_ht=scontent.fmex1-1.fna&oh=ed8393c936da7707c70ef80df2d287dc&oe=5C742B3D"));
     }
 
+
+    public void getDatos(final ArrayList<String> ids){
+            RestApiAdapter restApiAdapter = new RestApiAdapter();
+            Service service = restApiAdapter.getCharacterService();
+        for( int i = 0; i< ids.size(); i++){
+            String id = ids.get(i);
+            retrofit2.Call<JsonObject> call = service.getDataPersonajeById(id, Constants.APIKEY, Constants.TS, Constants.HASH);
+
+            call.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    try {
+                        assert response.body() != null;
+                        JSONObject jsonObject = new JSONObject(response.body().getAsJsonObject("data").toString());
+                        JSONArray jsonArray = jsonObject.getJSONArray("results");
+
+                        parseCharacter(jsonArray);
+                        mAdapterA.adiccionarLista(allies);
+
+                        allies.remove(0);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Log.e(Constants.TAG, " onResponse: " + t.getMessage());
+                }
+            });
+        }
+    }
+
+    public void parseCharacter(JSONArray jsonArray) throws JSONException{
+
+        JSONObject character = jsonArray.getJSONObject(0);
+
+        String name = character.getString("name");
+
+        JSONObject objectImage = character.getJSONObject("thumbnail");
+
+        String path = "";
+        String extension = "";
+
+        if (objectImage.getString("path") != "") {
+            path = objectImage.getString("path");
+            extension = objectImage.getString("extension");
+        } else {
+            path = "Image";
+            extension = "Not Available";
+        }
+
+        allies.add(new Secondary(name ,path + "." + extension));
+    }
+
+    public ArrayList<String> getAlliesID(String id) {
+        // aqui los de los demas
+        ArrayList<String> alliesId = new ArrayList<>();
+        switch (id) {
+            case "1009610":
+                alliesId.add("1009610");
+                alliesId.add("1014873");
+                break;
+            default:
+                alliesId.add("1016181");
+                alliesId.add("1009608");
+                break;
+        }
+        return alliesId;
+    }
 }
+

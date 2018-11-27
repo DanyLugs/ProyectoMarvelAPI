@@ -31,7 +31,6 @@ import retrofit2.Response;
  */
 public class PersonajeFragment extends Fragment {
 
-    private  static String TAG = "SPIDERBOOK";
     private String id;
     private Spider spider;
 
@@ -62,8 +61,11 @@ public class PersonajeFragment extends Fragment {
         Log.i("SPIDEX",texto);
         id = texto;
 
-        if(texto !="666666") {
+        assert id != null;
+        if(!id.equals("666666")) {
             getDatos(id);
+        }else{
+            setSpiderMoy();
         }
 
         return v;
@@ -93,7 +95,7 @@ public class PersonajeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.e(TAG, " onResponse: " + t.getMessage());
+                Log.e(Constants.TAG, " onResponse: " + t.getMessage());
             }
         });
     }
@@ -130,14 +132,6 @@ public class PersonajeFragment extends Fragment {
     }
 
     public void setDatos(Spider spider){
-
-        if(spider.getId() == 666666){
-            name.setText("Spider Moy");
-            tvStatus.setText("Dead");
-            tvComics.setText("Appearances in Comics: 1");
-            description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
-            image.setImageResource(R.drawable.smoy);
-        }
         name.setText(spider.getName());
         tvStatus.setText("Status: Alive");
         tvComics.setText("Appearances in Comics: "+spider.getComics());
@@ -155,5 +149,13 @@ public class PersonajeFragment extends Fragment {
                     .load(spider.getThumnail())
                     .into(image);
         }
+    }
+
+    public void setSpiderMoy(){
+        name.setText("Spider Moy");
+        tvStatus.setText("Dead");
+        tvComics.setText("Appearances in Comics: 1");
+        description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
+        image.setImageResource(R.drawable.smoy);
     }
 }
