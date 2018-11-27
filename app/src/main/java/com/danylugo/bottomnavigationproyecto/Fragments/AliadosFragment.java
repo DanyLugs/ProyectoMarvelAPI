@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.danylugo.bottomnavigationproyecto.Adapter.SecondaryListAdapter;
 import com.danylugo.bottomnavigationproyecto.MarvrelAPI.Constants;
@@ -122,6 +123,8 @@ public class AliadosFragment extends Fragment {
                 @Override
                 public void onFailure(Call<JsonObject> call, Throwable t) {
                     Log.e(Constants.TAG, " onResponse: " + t.getMessage());
+                    Toast toast = Toast.makeText( getActivity(), "Connection Failed", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             });
         }

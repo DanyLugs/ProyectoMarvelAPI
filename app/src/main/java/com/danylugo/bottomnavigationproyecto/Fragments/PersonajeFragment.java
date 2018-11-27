@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.danylugo.bottomnavigationproyecto.MarvrelAPI.Constants;
@@ -96,6 +97,8 @@ public class PersonajeFragment extends Fragment {
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
                 Log.e(Constants.TAG, " onResponse: " + t.getMessage());
+                Toast toast = Toast.makeText( getActivity(), "Connection Failed", Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
     }
