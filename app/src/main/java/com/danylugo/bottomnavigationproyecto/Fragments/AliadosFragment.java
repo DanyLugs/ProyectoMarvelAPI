@@ -84,7 +84,6 @@ public class AliadosFragment extends Fragment {
                 allies.add(new Secondary("Hulkbunny","https://static.comicvine.com/uploads/scale_small/0/77/1255306-hulk_bunny__earth_8311_.jpg"));
                 allies.add(new Secondary("Iron Mouse","https://static.comicvine.com/uploads/scale_small/0/77/1255265-60541_3499_93536_1_peter_porker_the_sp_super.jpg"));
                 allies.add(new Secondary("Punfisher","https://static.comicvine.com/uploads/scale_small/13/135098/5003483-punfisher.jpg"));
-
                 break;
 
                 default: //Spider-Moy
@@ -182,7 +181,6 @@ public class AliadosFragment extends Fragment {
                 alliesId.add("1009368");
                 alliesId.add("1009338");
                 alliesId.add("1009708");
-                alliesId.add("1009471");
                 alliesId.add("1009297");
                 break;
 
@@ -206,7 +204,7 @@ public class AliadosFragment extends Fragment {
                 alliesId.add("1009504");
                 alliesId.add("1009663");
                 alliesId.add("1009664");
-                alliesId.add("1009727");
+                alliesId.add("1009726");
                 alliesId.add("1009282");
                 alliesId.add("1009490");
                 alliesId.add("1009489");
@@ -219,14 +217,49 @@ public class AliadosFragment extends Fragment {
                 break;
 
             case "1011114": //Spider-Man (Marvel Zombies)
+                alliesId.add("1011118");
+                break;
 
+            case "1010727": //Spider-Dok (Superior Spider-Man
+                alliesId.add("1009268");
+                break;
 
+            case "1012295": //Spider-Man (Noir)
+                alliesId.add("1009185");
+                alliesId.add("1009708");
+                alliesId.add("1009610");
+                break;
 
+            case "1009609": //Spider-Girl (May Parker)
+                alliesId.add("1011027");
+                alliesId.add("1011346");
+                alliesId.add("1010828");
+                alliesId.add("1010890");
+                alliesId.add("1010687");
+                alliesId.add("1009356");
+                alliesId.add("1009361");
+                alliesId.add("1009663");
+                break;
+
+            case "1011197": //Scarlet Spider (Ben Reilly)
+                alliesId.add("1010857");
+                alliesId.add("1011347");
+                alliesId.add("1009157");
+                alliesId.add("1009322");
+                alliesId.add("1009708");
+                alliesId.add("1011319");
+                alliesId.add("1011426");
+                alliesId.add("1011033");
+                alliesId.add("1011288");
+                alliesId.add("1009619");
+                alliesId.add("1009306");
+                alliesId.add("1009269");
+                alliesId.add("1009262");
+                alliesId.add("1010325");
+                alliesId.add("1010881");
+                break;
 
             default:
-                alliesId.add("1016181");
-                alliesId.add("1009608");
-                break;
         }
         return alliesId;
     }
