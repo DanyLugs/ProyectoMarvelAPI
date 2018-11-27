@@ -41,7 +41,8 @@ public class PersonajeFragment extends Fragment {
     private Spider spider;
 
     private TextView name;
-    private TextView status;
+    private TextView tvStatus;
+    private TextView tvComics;
     private TextView description;
     private ImageView image;
 
@@ -56,31 +57,25 @@ public class PersonajeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         name = v.findViewById(R.id.dName);
-        status = v.findViewById(R.id.status);
+        tvStatus = v.findViewById(R.id.status);
+        tvComics = v.findViewById(R.id.comics);
         description = v.findViewById(R.id.description);
         image = v.findViewById(R.id.image);
 
 
         String texto = getArguments().getString("spiderID");
         Log.i("SPIDEX",texto);
-        id=texto;
+        id = texto;
 
-        if(texto!="666666") {
+        if(texto !="666666") {
             getDatos(id);
-        }else{
-            getSpiderMoy();
         }
 
         return v;
     }
 
-    private void getSpiderMoy() {
-        name.setText("Spider Moy");
-        status.setText("Dead");
-        description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
-    }
 
-    public  void getDatos(String id){
+    public void getDatos(String id){
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Service service = restApiAdapter.getCharacterService();
         retrofit2.Call<JsonObject> call = service.getDataPersonajeById(id,Constants.APIKEY,Constants.TS,Constants.HASH);
@@ -117,11 +112,7 @@ public class PersonajeFragment extends Fragment {
 
         String description = "";
 
-        if (character.isNull("description")) {
-            description = "Not avalible for this character";
-        } else {
-            description = character.getString("description");
-        }
+        description = character.getString("description");
 
         JSONObject objectImage = character.getJSONObject("thumbnail");
 
@@ -133,21 +124,41 @@ public class PersonajeFragment extends Fragment {
             extension = objectImage.getString("extension");
         } else {
             path = "Image";
-            extension = "Not Avalible";
+            extension = "Not Available";
         }
 
-        spider = new Spider(id, name , description, path + "." + extension);
+        JSONObject objectComic = character.getJSONObject("comics");
+
+        int comics = 0; comics = objectComic.getInt("available");
+
+        spider = new Spider(id, comics, name , description, path + "." + extension);
     }
 
     public void setDatos(Spider spider){
+
+        if(spider.getId() == 666666){
+            name.setText("Spider Moy");
+            tvStatus.setText("Dead");
+            tvComics.setText("Appearances in Comics: 1");
+            description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
+            image.setImageResource(R.drawable.smoy);
+        }
         name.setText(spider.getName());
-        status.setText("Ok");
-        description.setText(spider.getDescription());
-        Glide.with(this)
-                .load(spider.getThumnail())
-                .into(image);
-
-
+        tvStatus.setText("Status: Alive");
+        tvComics.setText("Appearances in Comics: "+spider.getComics());
+        if (!spider.getDescription().equals("")) {
+            description.setText("Description:\n" + "\n" + spider.getDescription());
+        }else{
+            description.setText("Description:\n" + "\n" + "Not available for this character");
+        }
+        if (spider.getId() == 1011347) {
+            image.setImageResource(R.drawable.spider_ham);
+        }else if(spider.getId() == 1010727){
+            image.setImageResource(R.drawable.superior_spider_man);
+        }else{
+            Glide.with(this)
+                    .load(spider.getThumnail())
+                    .into(image);
+        }
     }
-
 }

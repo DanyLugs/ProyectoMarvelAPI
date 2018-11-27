@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:elevation="8dp"
+        card_view:cardBackgroundColor="@color/colorPrimaryDark"
         card_view:cardCornerRadius="6dp"
         card_view:cardElevation="10dp"
         card_view:cardUseCompatPadding="true">
@@ -17,9 +18,7 @@
         <ImageView
             android:id="@+id/imgCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/spider_man_card2"
-            tools:ignore="ContentDescription" />
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/spiderName"
