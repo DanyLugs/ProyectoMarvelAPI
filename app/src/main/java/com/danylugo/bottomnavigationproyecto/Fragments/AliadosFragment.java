@@ -64,20 +64,35 @@ public class AliadosFragment extends Fragment {
         alliesRecycler.setAdapter(mAdapterA);
 
         assert id != null;
-        if(!id.equals("666666")) {
+        if(!id.equals("666666") && !id.equals("1011347")) {
             ArrayList<String> ids = getAlliesID(id);
             getDatos(ids);
         }else{
-            getDatosSpiderMoy();
+            getDatosSpiderMoy(id);
         }
 
         return view;
     }
 
-    private void getDatosSpiderMoy() {
-        //aqui agreguen las de spider moy :V
-        allies.add(new Secondary("Joan Guerrero","https://scontent.fmex1-1.fna.fbcdn.net/v/t1.0-9/23319326_1483952015016277_3992862400160235205_n.jpg?_nc_cat=108&_nc_ht=scontent.fmex1-1.fna&oh=ed8393c936da7707c70ef80df2d287dc&oe=5C742B3D"));
+    private void getDatosSpiderMoy(String id) {
+        switch (id){
+            case "1011347": //Spider-Ham
+                allies.add(new Secondary("Aunt Ham","https://vignette.wikia.nocookie.net/marveldatabase/images/7/7b/May_Porker_%28Earth-8311%29_1.jpg/revision/latest?cb=20110808075003"));
+                allies.add(new Secondary("Captain Americat","https://static.comicvine.com/uploads/scale_small/1/17826/336048-24534-captain-americat.jpg"));
+                allies.add(new Secondary("Deerdevil","https://static.comicvine.com/uploads/scale_small/0/4769/157140-138580-deerdevil.jpg"));
+                allies.add(new Secondary("Goose Rider","https://static.comicvine.com/uploads/scale_small/13/135098/3483933-goose-rider.jpg"));
+                allies.add(new Secondary("Hulkbunny","https://static.comicvine.com/uploads/scale_small/0/77/1255306-hulk_bunny__earth_8311_.jpg"));
+                allies.add(new Secondary("Iron Mouse","https://static.comicvine.com/uploads/scale_small/0/77/1255265-60541_3499_93536_1_peter_porker_the_sp_super.jpg"));
+                allies.add(new Secondary("Punfisher","https://static.comicvine.com/uploads/scale_small/13/135098/5003483-punfisher.jpg"));
+
+                break;
+
+                default: //Spider-Moy
+                    allies.add(new Secondary("Joan Guerrero","https://scontent.fmex1-1.fna.fbcdn.net/v/t1.0-9/23319326_1483952015016277_3992862400160235205_n.jpg?_nc_cat=108&_nc_ht=scontent.fmex1-1.fna&oh=ed8393c936da7707c70ef80df2d287dc&oe=5C742B3D"));
+
+        }
     }
+
 
 
     public void getDatos(final ArrayList<String> ids){
@@ -139,7 +154,7 @@ public class AliadosFragment extends Fragment {
         // aqui los de los demas
         ArrayList<String> alliesId = new ArrayList<>();
         switch (id) {
-            case "1009610":
+            case "1009610": //Spider-Man
                 alliesId.add("1009708");
                 alliesId.add("1009372");
                 alliesId.add("1009490");
@@ -149,13 +164,15 @@ public class AliadosFragment extends Fragment {
                 alliesId.add("1010325");
                 alliesId.add("1009489");
                 break;
-            case "1014873":
+
+            case "1014873": //Spider-Man 2099
                 alliesId.add("1009281");
                 alliesId.add("1009608");
                 alliesId.add("1009288");
                 alliesId.add("1009517");
                 break;
-            case "1016181":
+
+            case "1016181": //Ultimate Spider-Man (Miles Morales)
                 alliesId.add("1009471");
                 alliesId.add("1009189");
                 alliesId.add("1009220");
@@ -168,6 +185,43 @@ public class AliadosFragment extends Fragment {
                 alliesId.add("1009471");
                 alliesId.add("1009297");
                 break;
+
+            case "1009608": // Spider-Woman (Jessica Drew)
+                alliesId.add("1010775");
+                alliesId.add("1009590");
+                alliesId.add("1009220");
+                alliesId.add("1009708");
+                alliesId.add("1009335");
+                break;
+
+            case "1011426": //Scarlet Spider (Kaine)
+                alliesId.add("1009608");
+                alliesId.add("1009380");
+                alliesId.add("1009610");
+                break;
+
+            case "1011010": //Spider-Man (Ultimate)
+                alliesId.add("1009472");
+                alliesId.add("1009718");
+                alliesId.add("1009504");
+                alliesId.add("1009663");
+                alliesId.add("1009664");
+                alliesId.add("1009727");
+                alliesId.add("1009282");
+                alliesId.add("1009490");
+                alliesId.add("1009489");
+                alliesId.add("1009466");
+                alliesId.add("1009163");
+                alliesId.add("1009186");
+                alliesId.add("1009368");
+                alliesId.add("1009351");
+                alliesId.add("1009262");
+                break;
+
+            case "1011114": //Spider-Man (Marvel Zombies)
+
+
+
 
             default:
                 alliesId.add("1016181");
