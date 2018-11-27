@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private PersonajeFragment personajeFragment;
     private VillanosFragment villanosFragment;
 
-    private Spider spider;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
         args.putString("spiderID",id);
 
         personajeFragment.setArguments(args);
+        villanosFragment.setArguments(args);
+        aliadosFragment.setArguments(args);
 
     }
 
