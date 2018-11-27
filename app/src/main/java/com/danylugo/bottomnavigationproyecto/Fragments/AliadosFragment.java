@@ -140,9 +140,35 @@ public class AliadosFragment extends Fragment {
         ArrayList<String> alliesId = new ArrayList<>();
         switch (id) {
             case "1009610":
-                alliesId.add("1009610");
-                alliesId.add("1014873");
+                alliesId.add("1009708");
+                alliesId.add("1009372");
+                alliesId.add("1009490");
+                alliesId.add("1009663");
+                alliesId.add("1009545");
+                alliesId.add("1010784");
+                alliesId.add("1010325");
+                alliesId.add("1009489");
                 break;
+            case "1014873":
+                alliesId.add("1009281");
+                alliesId.add("1009608");
+                alliesId.add("1009288");
+                alliesId.add("1009517");
+                break;
+            case "1016181":
+                alliesId.add("1009471");
+                alliesId.add("1009189");
+                alliesId.add("1009220");
+                alliesId.add("1010828");
+                alliesId.add("1009257");
+                alliesId.add("1009619");
+                alliesId.add("1009368");
+                alliesId.add("1009338");
+                alliesId.add("1009708");
+                alliesId.add("1009471");
+                alliesId.add("1009297");
+                break;
+
             default:
                 alliesId.add("1016181");
                 alliesId.add("1009608");
