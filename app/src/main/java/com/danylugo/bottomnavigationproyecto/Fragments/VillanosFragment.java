@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,8 @@ public class VillanosFragment extends Fragment {
     private RecyclerView enemiesRecycler;
     private SecondaryListAdapter mAdapterE;
 
+    private String id;
+
     public VillanosFragment() {
         // Required empty public constructor
     }
@@ -42,6 +45,10 @@ public class VillanosFragment extends Fragment {
         enemies = new ArrayList<>();
         enemiesRecycler= (RecyclerView) view.findViewById(R.id.recyclerV);
         enemiesRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        String texto = getArguments().getString("spiderID");
+        Log.i("SPIDEX",texto);
+        id = texto;
 
         addElements();
 

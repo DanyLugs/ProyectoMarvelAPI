@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ public class AliadosFragment extends Fragment {
     private RecyclerView alliesRecycler;
     private SecondaryListAdapter mAdapterA;
 
+    private  String id;
+
     public AliadosFragment() {
         // Required empty public constructor
     }
@@ -38,6 +41,10 @@ public class AliadosFragment extends Fragment {
         allies = new ArrayList<>();
         alliesRecycler= (RecyclerView) view.findViewById(R.id.recyclerA);
         alliesRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        String texto = getArguments().getString("spiderID");
+        Log.i("SPIDEX",texto);
+        id = texto;
 
         addElements();
 
