@@ -156,9 +156,10 @@ public class PersonajeFragment extends Fragment {
 
     public void setSpiderMoy(){
         name.setText("Spider Moy");
-        tvStatus.setText("Dead");
+        tvStatus.setText("Status: Dead in Science");
         tvComics.setText("Appearances in Comics: 1");
-        description.setText("En un universo alterno fuera de los comics, existe el hombre araña de la facultad de ciencias, el es Spider Moy");
+        description.setText("In an alternative universe out of comics, exist a Spider-Man of Science faculty, He is Spider-Moy");
+
         image.setImageResource(R.drawable.smoy);
     }
 }
